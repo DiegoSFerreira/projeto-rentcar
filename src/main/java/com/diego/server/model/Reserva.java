@@ -5,25 +5,37 @@
  */
 package com.diego.server.model;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author Diego
  */
+@Entity
 public class Reserva {
-    
-    private long id;
-    private Veiculo veiculo;
-    private Usuario cliente;
-    private Usuario atendente;
-    private Date dataInicio;
-    private Date dataFim;
-    private int km;  
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @OneToOne
+    private Veiculo veiculo;
+    @OneToOne
+    private Usuario cliente;
+    @Temporal(TemporalType.DATE)
+    private Date dataInicio;
+    @Temporal(TemporalType.DATE)
+    private Date dataFim;
+    private int km;
+    @ManyToOne
+    private Locadora locadora;
     /**
      * @return the id
      */
@@ -67,20 +79,6 @@ public class Reserva {
     }
 
     /**
-     * @return the atendente
-     */
-    public Usuario getAtendente() {
-        return atendente;
-    }
-
-    /**
-     * @param atendente the atendente to set
-     */
-    public void setAtendente(Usuario atendente) {
-        this.atendente = atendente;
-    }
-
-    /**
      * @return the dataInicio
      */
     public Date getDataInicio() {
@@ -121,5 +119,19 @@ public class Reserva {
     public void setKm(int km) {
         this.km = km;
     }
-    
+
+    /**
+     * @return the locadora
+     */
+    public Locadora getLocadora() {
+        return locadora;
+    }
+
+    /**
+     * @param locadora the locadora to set
+     */
+    public void setLocadora(Locadora locadora) {
+        this.locadora = locadora;
+    }
+
 }

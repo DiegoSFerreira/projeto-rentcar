@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -23,6 +24,8 @@ public class Cidade implements Cadastro, Serializable {
     private long id;
     private String nome;
     private String uf;
+    @OneToMany (mappedBy = "municipio")
+    private Locadora locadora;
         
     /**
      * @return the nome
@@ -60,6 +63,20 @@ public class Cidade implements Cadastro, Serializable {
     @Override
     public void setId(long id) {
         this.id = id;
+    }
+
+    /**
+     * @return the locadora
+     */
+    public Locadora getLocadora() {
+        return locadora;
+    }
+
+    /**
+     * @param locadora the locadora to set
+     */
+    public void setLocadora(Locadora locadora) {
+        this.locadora = locadora;
     }
     
 }

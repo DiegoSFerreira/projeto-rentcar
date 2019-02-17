@@ -10,15 +10,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Diego
  */
-
 @Entity
-public class Veiculo implements Cadastro, Serializable{
+public class Veiculo implements Cadastro, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +30,9 @@ public class Veiculo implements Cadastro, Serializable{
     private String cambio;
     private String combustivel;
     private String anoFabricacao;
-    
+    @OneToOne
+    private Reserva reserva;
+
     @Override
     public long getId() {
         return id;

@@ -11,7 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToOne;
 
 //Continuar: 4.4. Configurando o CDI
 /**
@@ -19,7 +19,7 @@ import javax.persistence.ManyToOne;
  * @author Diego
  */
 @Entity
-public class Usuario implements Cadastro, Serializable{
+public class Usuario implements Cadastro, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,12 +27,12 @@ public class Usuario implements Cadastro, Serializable{
     private String nome;
     private String cpf;
 
-    @ManyToOne
-    private Cidade cidade;
-    
+    @OneToOne
+    private Reserva reserva;
+
     /**
      * @return the nome
-     */  
+     */
     public String getNome() {
         return nome;
     }
@@ -58,20 +58,6 @@ public class Usuario implements Cadastro, Serializable{
         this.cpf = cpf;
     }
 
-    /**
-     * @return the cidade
-     */
-    public Cidade getCidade() {
-        return cidade;
-    }
-
-    /**
-     * @param cidade the cidade to set
-     */
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
-    }
-    
     @Override
     public long getId() {
         return id;
@@ -81,5 +67,19 @@ public class Usuario implements Cadastro, Serializable{
     public void setId(long id) {
         this.id = id;
     }
-    
+
+    /**
+     * @return the reserva
+     */
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    /**
+     * @param reserva the reserva to set
+     */
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
+    }
+
 }
