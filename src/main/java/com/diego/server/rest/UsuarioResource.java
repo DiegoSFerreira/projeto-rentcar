@@ -11,6 +11,7 @@ package com.diego.server.rest;
  */
 import com.diego.server.dao.DAO;
 import com.diego.server.model.Usuario;
+import java.util.List;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.GET;
@@ -26,7 +27,11 @@ public class UsuarioResource {
     private DAO<Usuario> dao;
 
   
-
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Usuario> AllUsers(){
+        return dao.findAll();
+    }
     
     @GET
     @Path("{id}")

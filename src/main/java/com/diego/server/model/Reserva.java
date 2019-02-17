@@ -5,6 +5,7 @@
  */
 package com.diego.server.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ import javax.persistence.TemporalType;
  * @author Diego
  */
 @Entity
-public class Reserva {
+public class Reserva implements Cadastro, Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

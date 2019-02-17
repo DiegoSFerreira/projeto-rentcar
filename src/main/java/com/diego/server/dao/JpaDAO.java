@@ -10,7 +10,9 @@ package com.diego.server.dao;
  * @author Diego
  */
 import com.diego.server.model.Cadastro;
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 public class JpaDAO<T extends Cadastro> implements DAO<T> {
@@ -20,6 +22,15 @@ public class JpaDAO<T extends Cadastro> implements DAO<T> {
     public JpaDAO(EntityManager em, Class<T> classe){
         this.em = em;
         this.classe = classe;
+    }
+    
+    @Override
+    public List<T> findAll(){
+        
+        String jpql = "select u from usuario u";
+        
+        Query q = em.createQuery(jpql);
+        return q.getResultList();
     }
 
     @Override
