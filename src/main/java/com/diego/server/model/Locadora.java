@@ -26,12 +26,13 @@ public class Locadora implements Cadastro, Serializable{
     private long id;
     @ManyToOne 
     private Cidade municipio;
-    @OneToMany (mappedBy = "locadora")
+    @OneToMany (mappedBy = "locadoras")
     private Reserva reserva;
     
     /**
      * @return the id
      */
+    @Override
     public long getId() {
         return id;
     }
@@ -39,6 +40,7 @@ public class Locadora implements Cadastro, Serializable{
     /**
      * @param id the id to set
      */
+    @Override
     public void setId(long id) {
         this.id = id;
     }
