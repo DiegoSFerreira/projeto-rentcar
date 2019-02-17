@@ -30,6 +30,7 @@ public class Veiculo implements Cadastro, Serializable{
     private String arcondicionado;
     private String cambio;
     private String combustivel;
+    private String anoFabricacao;
     
     @Override
     public long getId() {
@@ -137,5 +138,19 @@ public class Veiculo implements Cadastro, Serializable{
      */
     public void setCombustivel(String combustivel) {
         this.combustivel = combustivel;
+    }
+
+    /**
+     * @return the anoFabricacao
+     */
+    public String getAnoFabricacao() {
+        return anoFabricacao;
+    }
+
+    /**
+     * @param anoFabricacao the anoFabricacao to set
+     */
+    public void setAnoFabricacao(String anoFabricacao) {
+        this.anoFabricacao = anoFabricacao;
     }
 }
